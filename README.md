@@ -6,7 +6,7 @@ The subject imposes at least two different projections, so I've coded my program
 
 Here the set of features my Fdf has:
 1. One static structure pointer as environment that gets modified whenever needed.
-2. Matrix calculation on stack memory for improved fluidity, that is for translation, scaling and rotations.
+2. Matrix calculation, that is for translation, scaling and rotations.
 3. An implementation of the Bresenham algorithm for line drawing on screen. 
 4. Color management and color gradient based on the Z coordinates of every given point.
 5. Zoom in/out.
