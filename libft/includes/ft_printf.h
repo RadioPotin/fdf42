@@ -33,8 +33,8 @@
 # include <sys/types.h>
 # include "libft.h"
 
-char	g_buff[BUFFSIZE];
-int		g_buffi;
+extern char	g_buff[BUFFSIZE];
+extern int		g_buffi;
 
 typedef union	u_varpkg {
 	void			*vptr;

@@ -15,12 +15,12 @@ COMP = $(CC) -c
 DEBUG = $(CC) -g
 NAME = fdf
 NAMEDEB = fdfdeb
-LIB = $(PATHLIB)libft.a
+LIB = $(PATHLIB)libft.a -Lminilibx
 LIBDEB= $(PATHLIB)libftdeb.a
 BIN = ft_printf
 
 INCLUDES += -Iincludes
-INCLUDES += -Ilibft/includes
+INCLUDES += -Ilibft/includes -Iminilibx
 
 DSYM += *.dSYM
 
@@ -43,7 +43,7 @@ vpath %.h includes/
 WFG = -Wall -Wextra -Werror
 IFG = -I$(PATHINC)
 CFG = $(WFG) $(IFG)
-FDF = -lmlx -framework OpenGL -framework AppKit
+FDF = -lmlx_Linux -lm -lX11 -lXext
 
 #-SRCS-#
 SRCS += main.c
@@ -109,22 +109,22 @@ all: $(NAME)
 debug: $(PATHOBJDEB) $(NAMEDEB)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) $(WFG) -o $(NAME) $(SRCS) $(IFG) $(LIB) $(FDF) $(INCLUDES)
+	$(CC) $(WFG) -o $(NAME) $(SRCS) $(IFG) $(LIB) $(FDF) $(INCLUDES)
 
 $(LIB): FORCE
-	@$(MKE) $(PATHMAKE)
+	$(MKE) $(PATHMAKE)
 
 $(OBJS): $(PATHOBJ)%.o : ./%.c $(INCS) Makefile
-	@$(call run_and_test, $(COMP) $(CFG) $(INCLUDES) $< -o $@)
+	$(call run_and_test, $(COMP) $(CFG) $(INCLUDES) $< -o $@)
 
 $(NAMEDEB): $(LIBDEB) $(DEBOBJS)
-	@$(DEBUG) $(WFG) -o $(NAMEDEB) .db*.o $(IFG) $(LIBDEB) $(FDF) $(INCLUDES)
+	$(DEBUG) $(WFG) -o $(NAMEDEB) .db*.o $(IFG) $(LIBDEB) $(FDF) $(INCLUDES)
 
 $(LIBDEB): FORCE
-	@$(MKE) $(PATHMAKE) debug
+	$(MKE) $(PATHMAKE) debug
 
 $(DEBOBJS): $(PATHOBJDEB)db%.o : %.c $(INCS) Makefile
-	@$(call run_and_test, $(DEBUG) -c $(CFG) $(INCLUDES) $(IFG) $< -o $@)
+	$(call run_and_test, $(DEBUG) -c $(CFG) $(INCLUDES) $(IFG) $< -o $@)
 
 FORCE:
 

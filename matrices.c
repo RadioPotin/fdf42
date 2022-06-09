@@ -103,10 +103,8 @@ t_m4b4	setrotation(double angle, int axis)
 
 t_pos	vectom4b4(t_pos pos, t_m4b4 mat)
 {
-	t_fdf *fdf;
 	t_pos tmp;
 
-	fdf = fetchenv();
 	tmp.x = pos.x * mat.mat[0][0] + pos.y * mat.mat[0][1]\
 			+ pos.z * mat.mat[0][2] + mat.mat[0][3];
 	tmp.y = pos.x * mat.mat[1][0] + pos.y * mat.mat[1][1]\

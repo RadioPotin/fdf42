@@ -12,6 +12,9 @@
 
 #include "ft_printf.h"
 
+char	g_buff[BUFFSIZE];
+int		g_buffi;
+
 static int		formnaturecheck(const char *ptr)
 {
 	return (ft_nchrchck(ptr + 1, OPT, ft_strichrset(ptr, CONVTYPE)));

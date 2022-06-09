@@ -24,9 +24,7 @@ static int		rec_size(int nb, int fg_negative, int ret)
 static char		*actualize(char *a, size_t len)
 {
 	int		i;
-	int		refresher;
 
-	refresher = 1;
 	i = ft_strichr(a, ':');
 	while (len && i >= 0 && (a[i] == ':' || a[i] == '9' || a[i] == '.'))
 	{

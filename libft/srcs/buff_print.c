@@ -14,13 +14,11 @@
 
 static int		nullcharprint(char *fin)
 {
-	int		i;
 	int		char_nbr;
 	char	c;
 	char	*ptr;
 
 	c = '\0';
-	i = 0;
 	char_nbr = buff_print();
 	char_nbr += ft_strlen(fin);
 	ptr = ft_strchr(fin, '1');

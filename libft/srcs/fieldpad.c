@@ -59,9 +59,7 @@ static char		*fieldpad(char *fin, t_form *fm)
 
 char			*padrenderer(char *fin, t_form *fm, int len)
 {
-	char	*swp;
 
-	swp = fin;
 	len = fm->arg_fg.fg_width - ft_strlen(fin);
 	if (len > 0)
 		fin = fieldpad(fin, fm);

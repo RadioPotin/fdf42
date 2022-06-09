@@ -218,27 +218,27 @@ all: $(NAME)
 debug: $(PATHOBJDEB) $(NAMEDEB)
 
 $(NAME): $(OBJS)
-	@ar -rus $@ $^
+	ar -rus $@ $^
 
 $(OBJS): $(PATHOBJ)%.o : ./%.c $(INCS)
-	@$(call run_and_test, $(COMP) $(CFG) $< -o $@)
+	$(call run_and_test, $(COMP) $(CFG) $< -o $@)
 
 $(NAMEDEB): $(DEBOBJS)
-	@ar -rus $@ $^
+	ar -rus $@ $^
 
 $(DEBOBJS): $(PATHOBJDEB)db%.o : %.c $(INCS)
-	@$(call run_and_test, $(DEBUG) $(DFG) $(CFG) $(IFG) $< -o $@)
+	$(call run_and_test, $(DEBUG) $(DFG) $(CFG) $(IFG) $< -o $@)
 
 clean:
-	@$(RMRF) $(OBJS)
-	@$(RMRF) $(DEBOBJS)
-	@$(RMRF) *.o
-	@$(RMRF) .db*.o
-	@$(RMRF) $(DSYM)
+	$(RMRF) $(OBJS)
+	$(RMRF) $(DEBOBJS)
+	$(RMRF) *.o
+	$(RMRF) .db*.o
+	$(RMRF) $(DSYM)
 
 fclean: clean
-	@$(RMRF) $(NAME)
-	@$(RMRF) $(NAMEDEB)
-	@$(RMRF) $(BIN)
+	$(RMRF) $(NAME)
+	$(RMRF) $(NAMEDEB)
+	$(RMRF) $(BIN)
 
 re: fclean all
